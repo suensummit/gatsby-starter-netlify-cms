@@ -23,10 +23,27 @@ $black: #2b2523
   flex-wrap: wrap
   justify-content: left
   align-items: center
+  text-align: center
   li
-    padding: 0 2rem 1rem 0
-    margin-bottom: 1.5rem
-    margin-top: 0
+    // padding: 0 2rem 1rem 0
+    width: 6rem
+    height: 3rem
+    border-radius: 1.5rem
+    line-height: 3rem
+    display: inline-block
+    background-color: $black
+    a
+      width: 2rem
+      height: 1rem
+      letter-spacing: normal
+      text-align: center
+      color: #ffffff
+
+.searchbar
+  width: 800px
+  height: 50px
+  border-radius: 25px
+
 
 // Helper Classes
 .full-width-image-container
@@ -37,7 +54,7 @@ $black: #2b2523
   right: 50%
   margin: 2em -50vw
   background-size: cover
-  background-position: bottom
+  // background-position: bottom
   display: flex
   justify-content: center
   align-items: center

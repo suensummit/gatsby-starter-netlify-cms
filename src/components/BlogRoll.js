@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { kebabCase } from 'lodash'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 
@@ -12,9 +13,9 @@ class BlogRoll extends React.Component {
       <div className="columns is-multiline">
         {posts &&
           posts.map(({ node: post }) => (
-            <div className="is-parent column is-6" key={post.id}>
+            <div className="is-parent column is-12" key={post.id}>
               <article
-                className={`blog-list-item tile is-child box notification ${
+                className={`blog-list-item tile is-child box ${
                   post.frontmatter.featuredpost ? 'is-featured' : ''
                 }`}
               >
@@ -36,15 +37,25 @@ class BlogRoll extends React.Component {
                     >
                       {post.frontmatter.title}
                     </Link>
-                    <span> &bull; </span>
+                    <span></span>
+                    {post.frontmatter.tags && post.frontmatter.tags.length ? (
+                      <div style={{ marginTop: `4rem` }}>
+                        <ul className="taglist">
+                          {post.frontmatter.tags.map((tag) => (
+                            <li key={tag + `tag`}>
+                              <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                    <br />
                     <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
+                      {post.frontmatter.logline}
                     </span>
                   </p>
                 </header>
                 <p>
-                  {post.excerpt}
-                  <br />
                   <br />
                   <Link className="button" to={post.fields.slug}>
                     Keep Reading →
@@ -71,12 +82,11 @@ export default () => (
     query={graphql`
       query BlogRollQuery {
         allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___date] }
+          sort: { order: DESC, fields: [frontmatter___tags] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
               id
               fields {
                 slug
@@ -84,8 +94,8 @@ export default () => (
               frontmatter {
                 title
                 templateKey
-                date(formatString: "MMMM DD, YYYY")
-                featuredpost
+                logline
+                tags
                 featuredimage {
                   childImageSharp {
                     fluid(maxWidth: 120, quality: 100) {

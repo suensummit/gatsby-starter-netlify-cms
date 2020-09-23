@@ -13,15 +13,26 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
+    <div
+      className="full-width-image-container margin-top-0"
+      style={{
+        backgroundImage: `url('/img/search-index.jpg')`,
+      }}
+    >
+      <input className="searchbar"
+        key="keyword"
+        placeholder={"搜尋"}
+      />
+    </div>
     <section className="section">
-      <Helmet title={`Tags | ${title}`} />
+      <Helmet title={`熱門標籤 | ${title}`} />
       <div className="container content">
         <div className="columns">
           <div
             className="column is-10 is-offset-1"
             style={{ marginBottom: '6rem' }}
           >
-            <h1 className="title is-size-2 is-bold-light">Tags</h1>
+            <h1 className="title is-size-2 is-bold-light">熱門標籤</h1>
             <ul className="taglist">
               {group.map((tag) => (
                 <li key={tag.fieldValue}>
