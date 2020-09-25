@@ -3,6 +3,7 @@ import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Layout from '../../components/Layout'
+import BlogRoll from '../../components/BlogRoll'
 
 const TagsPage = ({
   data: {
@@ -19,6 +20,8 @@ const TagsPage = ({
         backgroundImage: `url('/img/search-index.jpg')`,
       }}
     >
+      <div className="input-group">
+      </div>
       <input className="searchbar"
         key="keyword"
         placeholder={"搜尋"}
@@ -42,6 +45,38 @@ const TagsPage = ({
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+        <div className="columns is-12 categories">
+          <div className="column is-4 is-offset-2">
+            <img src="/img/cat1.png" alt=""/>
+          </div>
+          <div className="column is-4 is-offset-2">
+            <img src="/img/cat2.png" alt=""/>
+          </div>
+          <div className="column is-4 is-offset-2">
+            <img src="/img/cat3.png" alt=""/>
+          </div>
+        </div>
+        <div className="columns is-12 categories">
+          <div className="column is-4 is-offset-2">
+            <img src="/img/cat4.png" alt=""/>
+          </div>
+          <div className="column is-4 is-offset-2">
+            <img src="/img/cat5.png" alt=""/>
+          </div>
+          <div className="column is-4 is-offset-2">
+            <img src="/img/cat6.png" alt=""/>
+          </div>
+        </div>
+        <div className="columns">
+          <div className="column is-12">
+            <BlogRoll />
+            <div className="column is-12 has-text-centered">
+              <Link className="btn" to="/blog">
+                更多排行
+              </Link>
+            </div>
           </div>
         </div>
       </div>

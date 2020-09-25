@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 export const BlogPostTemplate = ({
   content,
@@ -23,6 +24,16 @@ export const BlogPostTemplate = ({
       <div className="container content">
         <div className="columns">
           <div className="column is-3 is-offset-1">
+            {featuredimage ? (
+              <div className="featured-thumbnail">
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: featuredimage,
+                    alt: `featured image thumbnail for post ${title}`,
+                  }}
+                />
+              </div>
+            ) : null}
           </div>
           <div className="column is-7 is-offset-1">
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
@@ -73,7 +84,7 @@ const BlogPost = ({ data }) => {
         contentComponent={HTMLContent}
         logline={post.frontmatter.logline}
         helmet={
-          <Helmet titleTemplate="%s | Blog">
+          <Helmet titleTemplate="%s | IP">
             <title>{`${post.frontmatter.title}`}</title>
             <meta
               name="logline"
@@ -83,6 +94,7 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        featuredimage={post.frontmatter.featuredimage}
       />
     </Layout>
   )
@@ -105,6 +117,13 @@ export const pageQuery = graphql`
         title
         logline
         tags
+        featuredimage {
+          childImageSharp {
+            fluid(maxWidth: 250, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

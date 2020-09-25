@@ -82,7 +82,7 @@ export default () => (
     query={graphql`
       query BlogRollQuery {
         allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___tags] }
+          sort: { order: ASC, fields: [frontmatter___tags] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
         ) {
           edges {
@@ -98,7 +98,7 @@ export default () => (
                 tags
                 featuredimage {
                   childImageSharp {
-                    fluid(maxWidth: 120, quality: 100) {
+                    fluid(maxWidth: 250, quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }
