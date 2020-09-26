@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
+import PageRoll from '../../components/PageRoll'
 
 const TagsPage = ({
   data: {
@@ -48,33 +49,45 @@ const TagsPage = ({
           </div>
         </div>
         <div className="columns is-12 categories">
-          <div className="column is-4 is-offset-2">
+          <div className="column is-4 is-offset-0">
             <img src="/img/cat1.png" alt=""/>
           </div>
-          <div className="column is-4 is-offset-2">
+          <div className="column is-4 is-offset-0">
             <img src="/img/cat2.png" alt=""/>
           </div>
-          <div className="column is-4 is-offset-2">
+          <div className="column is-4 is-offset-0">
             <img src="/img/cat3.png" alt=""/>
           </div>
         </div>
         <div className="columns is-12 categories">
-          <div className="column is-4 is-offset-2">
+          <div className="column is-4 is-offset-0">
             <img src="/img/cat4.png" alt=""/>
           </div>
-          <div className="column is-4 is-offset-2">
+          <div className="column is-4 is-offset-0">
             <img src="/img/cat5.png" alt=""/>
           </div>
-          <div className="column is-4 is-offset-2">
+          <div className="column is-4 is-offset-0">
             <img src="/img/cat6.png" alt=""/>
           </div>
         </div>
         <div className="columns">
-          <div className="column is-12">
+          <div className="column is-10 is-offset-1">
+          <h1 className="title is-size-2 is-bold-light">推薦內容</h1>
             <BlogRoll />
-            <div className="column is-12 has-text-centered">
+            <div className="column is-10 has-text-centered">
               <Link className="btn" to="/blog">
                 更多排行
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="columns">
+          <div className="column is-10 is-offset-1">
+          <h1 className="title is-size-2 is-bold-light">商情文章</h1>
+            <PageRoll />
+            <div className="column is-10 has-text-centered">
+              <Link className="btn" to="/blog">
+                更多商情
               </Link>
             </div>
           </div>
