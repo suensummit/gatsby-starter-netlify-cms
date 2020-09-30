@@ -5,6 +5,8 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 import PageRoll from '../../components/PageRoll'
+import HeaderSlider from '../../components/HeaderSlider'
+
 
 const TagsPage = ({
   data: {
@@ -15,28 +17,21 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
-    <div
-      className="full-width-image-container margin-top-0"
-      style={{
-        backgroundImage: `url('/img/search-index.jpg')`,
-      }}
-    >
-      <div className="input-group">
-      </div>
-      <input className="searchbar"
-        key="keyword"
-        placeholder={"搜尋"}
-      />
-    </div>
+    <HeaderSlider />
     <section className="section">
-      <Helmet title={`熱門標籤 | ${title}`} />
+      <Helmet title={`首頁 | ${title}`} />
       <div className="container content">
+        <div>
+          <input className="searchbar"
+            key="keyword"
+            placeholder={"搜尋"}
+          />
+        </div>
         <div className="columns">
           <div
             className="column is-10 is-offset-1"
             style={{ marginBottom: '6rem' }}
           >
-            <h1 className="title is-size-2 is-bold-light">熱門標籤</h1>
             <ul className="taglist">
               {group.map((tag) => (
                 <li key={tag.fieldValue}>
@@ -46,6 +41,17 @@ const TagsPage = ({
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+        <div className="columns">
+          <div className="column is-10 is-offset-1">
+          <h1 className="title is-size-2 is-bold-light"></h1>
+            <BlogRoll />
+            <div className="column is-10 has-text-centered">
+              <Link className="btn" to="/blog">
+                更多排行
+              </Link>
+            </div>
           </div>
         </div>
         <div className="columns is-12 categories">
@@ -68,17 +74,6 @@ const TagsPage = ({
           </div>
           <div className="column is-4 is-offset-0">
             <img src="/img/cat6.png" alt=""/>
-          </div>
-        </div>
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-          <h1 className="title is-size-2 is-bold-light">推薦內容</h1>
-            <BlogRoll />
-            <div className="column is-10 has-text-centered">
-              <Link className="btn" to="/blog">
-                更多排行
-              </Link>
-            </div>
           </div>
         </div>
         <div className="columns">
@@ -111,6 +106,7 @@ export const tagPageQuery = graphql`
         fieldValue
         totalCount
       }
+
     }
   }
 `

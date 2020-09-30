@@ -82,6 +82,7 @@ export default () => (
     query={graphql`
       query BlogRollQuery {
         allMarkdownRemark(
+          limit: 3
           sort: { order: ASC, fields: [frontmatter___tags] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
         ) {
@@ -95,6 +96,7 @@ export default () => (
                 title
                 templateKey
                 logline
+                cats
                 tags
                 featuredimage {
                   childImageSharp {
