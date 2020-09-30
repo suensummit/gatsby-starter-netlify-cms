@@ -16,6 +16,7 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             frontmatter {
+              cats
               tags
               templateKey
             }
@@ -36,6 +37,7 @@ exports.createPages = ({ actions, graphql }) => {
       createPage({
         path: edge.node.fields.slug,
         tags: edge.node.frontmatter.tags,
+        cats: edge.node.frontmatter.cats,
         component: path.resolve(
           `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
         ),
@@ -66,6 +68,29 @@ exports.createPages = ({ actions, graphql }) => {
         component: path.resolve(`src/templates/tags.js`),
         context: {
           tag,
+        },
+      })
+    })
+    // Cat pages:
+    let cats = []
+    // Iterate through each post, putting all found cats into `cats`
+    posts.forEach((edge) => {
+      if (_.get(edge, `node.frontmatter.cats`)) {
+        cats = cats.concat(edge.node.frontmatter.cats)
+      }
+    })
+    // Eliminate duplicate cats
+    cats = _.uniq(cats)
+
+    // Make cat pages
+    cats.forEach((cat) => {
+      const catPath = `/cats/${_.kebabCase(cat)}/`
+
+      createPage({
+        path: catPath,
+        component: path.resolve(`src/templates/cats.js`),
+        context: {
+          cat,
         },
       })
     })
