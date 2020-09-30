@@ -38,8 +38,19 @@ class BlogRoll extends React.Component {
                       {post.frontmatter.title}
                     </Link>
                     <span></span>
+                    {post.frontmatter.cats && post.frontmatter.cats.length ? (
+                      <div style={{ marginTop: `1rem` }}>
+                        <ul className="catlist">
+                          {post.frontmatter.cats.map((cat) => (
+                            <li key={cat + `cat`}>
+                              <Link to={`/cats/${kebabCase(cat)}/`}>{cat}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
                     {post.frontmatter.tags && post.frontmatter.tags.length ? (
-                      <div style={{ marginTop: `4rem` }}>
+                      <div style={{ marginTop: `1rem` }}>
                         <ul className="taglist">
                           {post.frontmatter.tags.map((tag) => (
                             <li key={tag + `tag`}>

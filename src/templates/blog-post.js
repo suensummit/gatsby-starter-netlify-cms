@@ -12,6 +12,7 @@ export const BlogPostTemplate = ({
   contentComponent,
   featuredimage,
   logline,
+  cats,
   tags,
   title,
   helmet,
@@ -39,8 +40,19 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
+            {cats && cats.length ? (
+              <div style={{ marginTop: `1rem` }}>
+                <ul className="catlist">
+                  {cats.map((cat) => (
+                    <li key={cat + `cat`}>
+                      <Link to={`/cats/${kebabCase(cat)}/`}>{cat}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
+              <div style={{ marginTop: `1rem` }}>
                 <ul className="taglist">
                   {tags.map((tag) => (
                     <li key={tag + `tag`}>
@@ -92,6 +104,7 @@ const BlogPost = ({ data }) => {
             />
           </Helmet>
         }
+        cats={post.frontmatter.cats}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         featuredimage={post.frontmatter.featuredimage}
@@ -116,6 +129,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         logline
+        cats
         tags
         featuredimage {
           childImageSharp {
