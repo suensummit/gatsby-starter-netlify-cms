@@ -6,6 +6,7 @@ import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 import PageRoll from '../../components/PageRoll'
 import HeaderSlider from '../../components/HeaderSlider'
+import Search from '../../components/Search'
 
 
 const CatsPage = ({
@@ -22,10 +23,7 @@ const CatsPage = ({
       <Helmet title={`首頁 | ${title}`} />
       <div className="container content">
         <div>
-          <input className="searchbar"
-            key="keyword"
-            placeholder={"搜尋"}
-          />
+          <Search className="link_bold"/>
         </div>
         <div className="columns">
           <div

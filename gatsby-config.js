@@ -80,5 +80,74 @@ module.exports = {
       },
     }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array
+    {
+      resolve: `gatsby-plugin-lunr`,
+      options: {
+        languages: [
+          {
+            // ISO 639-1 language codes. See https://lunrjs.com/guides/language_support.html for details
+            name: 'en',
+            // A function for filtering nodes. () => true by default
+            // filterNodes: node => node.frontmatter.templateKey === "blog-post"
+            // Add to index custom entries, that are not actually extracted from gatsby nodes
+            // customEntries: [{ title: 'Pictures', content: 'awesome pictures', url: '/pictures' }],
+          },
+          {
+            name: 'jp',
+            // filterNodes: node => node.frontmatter.templateKey === "blog-post"
+          },
+        ],
+        // Fields to index. If store === true value will be stored in index file.
+        // Attributes for custom indexing logic. See https://lunrjs.com/docs/lunr.Builder.html for details
+        fields: [
+          { name: 'title', store: true, attributes: { boost: 20 } },
+          { name: 'logline', store: true, attributes: { boost: 5 } },
+          { name: 'cats', store: true, attributes: { boost: 10 } },
+          { name: 'tags', store: true, attributes: { boost: 10 } },
+          { name: 'author', store: true },
+          { name: 'origin', store: true },
+          { name: 'publisher', store: true },
+          { name: 'year', store: true },
+          { name: 'owner', store: true },
+          { name: 'dev', store: true },
+          { name: 'property', store: true },
+          { name: 'signiture', store: true },
+          { name: 'field', store: true },
+          { name: 'spec', store: true },
+          { name: 'ref', store: true },
+          { name: 'content' },
+          { name: 'url', store: true },
+        ],
+        // How to resolve each field's value for a supported node type
+        resolvers: {
+        // For any node of type MarkdownRemark, list how to resolve the fields' values
+          MarkdownRemark: {
+            title: node => node.frontmatter.title,
+            logline: node => node.frontmatter.logline,
+            cats: node => node.frontmatter.cats,
+            tags: node => node.frontmatter.tags,
+            author: node => node.frontmatter.author,
+            origin: node => node.frontmatter.origin,
+            publisher: node => node.frontmatter.publisher,
+            year: node => node.frontmatter.year,
+            owner: node => node.frontmatter.owner,
+            dev: node => node.frontmatter.dev,
+            property: node => node.frontmatter.property,
+            signiture: node => node.frontmatter.signiture,
+            field: node => node.frontmatter.field,
+            spec: node => node.frontmatter.spec,
+            ref: node => node.frontmatter.ref,
+            content: node => node.rawMarkdownBody,
+            url: node => node.fields.slug,
+          },
+        },
+        //custom index file name, default is search_index.json
+        filename: 'search_index.json',
+        //custom options on fetch api call for search_ındex.json
+        fetchOptions: {
+          credentials: 'same-origin'
+        },
+      },
+    },
   ],
 }
