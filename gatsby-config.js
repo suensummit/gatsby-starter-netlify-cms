@@ -117,6 +117,7 @@ module.exports = {
           { name: 'ref', store: true },
           { name: 'content' },
           { name: 'url', store: true },
+          { name: 'featuredimage', store: true},
         ],
         // How to resolve each field's value for a supported node type
         resolvers: {
@@ -139,6 +140,7 @@ module.exports = {
             ref: node => node.frontmatter.ref,
             content: node => node.rawMarkdownBody,
             url: node => node.fields.slug,
+            featuredimage: node => node.frontmatter.featuredimage,
           },
         },
         //custom index file name, default is search_index.json

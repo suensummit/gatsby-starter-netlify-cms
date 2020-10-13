@@ -13,9 +13,6 @@ export default class BlogIndexPage extends React.Component {
             <div>
               <Search className="link_bold"/>
             </div>
-            <div className="content">
-              <BlogRoll />
-            </div>
           </div>
         </section>
       </Layout>
