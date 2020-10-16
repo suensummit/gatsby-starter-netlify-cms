@@ -5,10 +5,55 @@ import Select from 'react-select'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 
 const options = [
-  { value: 'chocolate', label: '冒險' },
-  { value: 'strawberry', label: '奇幻' },
-  { value: 'vanilla', label: '懸疑' }
-]
+  {
+    label: "原始文類",
+    options: [
+      { label: "原始文類 - 出版品", value: "出版品" },
+      { label: "原始文類 - 音樂", value: "音樂" },
+      { label: "原始文類 - 展演", value: "展演" },
+      { label: "原始文類 - 電影", value: "電影" },
+      { label: "原始文類 - 劇本", value: "劇本" }
+    ]
+  },
+  {
+    label: "類型",
+    options: [
+      { label: "類型 - 動作", value: "動作" },
+      { label: "類型 - 成人", value: "成人" },
+      { label: "類型 - 冒險", value: "冒險" },
+      { label: "類型 - 動畫", value: "動畫" },
+      { label: "類型 - 傳記", value: "傳記" },
+      { label: "類型 - 喜劇", value: "喜劇" },
+      { label: "類型 - 犯罪", value: "犯罪" },
+      { label: "類型 - 家庭", value: "家庭" },
+      { label: "類型 - 劇情", value: "劇情" },
+      { label: "類型 - 奇幻", value: "奇幻" },
+      { label: "類型 - 黑色", value: "黑色" },
+      { label: "類型 - 歷史", value: "歷史" },
+      { label: "類型 - 恐怖", value: "恐怖" },
+      { label: "類型 - 音樂", value: "音樂" },
+      { label: "類型 - 歌舞", value: "歌舞" },
+      { label: "類型 - 懸疑", value: "懸疑" },
+      { label: "類型 - 浪漫", value: "浪漫" },
+      { label: "類型 - 科幻", value: "科幻" },
+      { label: "類型 - 運動", value: "運動" },
+      { label: "類型 - 驚悚", value: "驚悚" },
+      { label: "類型 - 戰爭", value: "戰爭" },
+      { label: "類型 - 西部", value: "西部" },
+      { label: "類型 - 災難", value: "災難" }
+    ]
+  },
+  {
+    label: "建議改編領域",
+    options: [
+      { label: "建議改編領域 - 出版品", value: "出版品" },
+      { label: "建議改編領域 - 音樂", value: "音樂" },
+      { label: "建議改編領域 - 展演", value: "展演" },
+      { label: "建議改編領域 - 電影", value: "電影" },
+      { label: "建議改編領域 - 戲劇", value: "戲劇" }
+    ]
+  }
+];
 
 class Search extends Component {
   state = {
@@ -27,7 +72,7 @@ class Search extends Component {
         />
         <br />
         <Select
-          defaultValue={[options[2], options[3]]}
+          defaultValue={[options[2].options[0], options[0].options[2]]}
           isMulti
           name="colors"
           options={options}
