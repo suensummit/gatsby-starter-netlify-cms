@@ -43,13 +43,12 @@ export const BlogPostTemplate = ({
       {helmet || ''}
       <div className="container content">
         {featuredimage ? (
-          <div className="full-width-image-blog">
-            <img
-              src="/img/ip-04.jpg"
-              height="300px"
-              width="100%"
-            />
-          </div>
+          <PreviewCompatibleImage
+            imageInfo={{
+              image: featuredimage,
+              alt: `featured image thumbnail for post ${title}`,
+            }}
+          />
         ) : null}
         <div className="columns">
           <div className="column is-10 is-offset-1">
