@@ -3,6 +3,14 @@ import { kebabCase } from 'lodash'
 import { Link } from 'gatsby'
 import Select from 'react-select'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import { makeStyles } from '@material-ui/core/styles';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 const options = [
   {
@@ -70,6 +78,65 @@ class Search extends Component {
           onChange={this.search}
           placeholder={"搜尋"}
         />
+        <br />
+        <div>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">原始文類</FormLabel>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox name="出版品" />}
+                label="出版品"
+              />
+              <FormControlLabel
+                control={<Checkbox name="音樂" />}
+                label="音樂"
+              />
+              <FormControlLabel
+                control={<Checkbox name="展演" />}
+                label="展演"
+              />
+              <FormControlLabel
+                control={<Checkbox name="電影" />}
+                label="電影"
+              />
+              <FormControlLabel
+                control={<Checkbox name="腳本" />}
+                label="腳本"
+              />
+            </FormGroup>
+            <FormHelperText></FormHelperText>
+          </FormControl>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">類型</FormLabel>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox name="冒險" />}
+                label="冒險"
+              />
+              <FormControlLabel
+                control={<Checkbox name="科幻" />}
+                label="科幻"
+              />
+              <FormControlLabel
+                control={<Checkbox name="家庭" />}
+                label="家庭"
+              />
+              <FormControlLabel
+                control={<Checkbox name="浪漫" />}
+                label="浪漫"
+              />
+              <FormControlLabel
+                control={<Checkbox name="劇情" />}
+                label="劇情"
+              />
+              <FormControlLabel
+                control={<Checkbox name="傳記" />}
+                label="傳記"
+              />
+            </FormGroup>
+            <FormHelperText></FormHelperText>
+          </FormControl>
+        </div>
         <br />
         <Select
           defaultValue={[options[2].options[0], options[0].options[2]]}
