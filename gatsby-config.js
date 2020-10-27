@@ -85,16 +85,7 @@ module.exports = {
       options: {
         languages: [
           {
-            // ISO 639-1 language codes. See https://lunrjs.com/guides/language_support.html for details
-            name: 'en',
-            // A function for filtering nodes. () => true by default
-            // filterNodes: node => node.frontmatter.templateKey === "blog-post"
-            // Add to index custom entries, that are not actually extracted from gatsby nodes
-            // customEntries: [{ title: 'Pictures', content: 'awesome pictures', url: '/pictures' }],
-          },
-          {
             name: 'jp',
-            // filterNodes: node => node.frontmatter.templateKey === "blog-post"
           },
         ],
         // Fields to index. If store === true value will be stored in index file.
@@ -116,8 +107,8 @@ module.exports = {
           { name: 'spec', store: true },
           { name: 'ref', store: true },
           { name: 'content' },
-          { name: 'url', store: true },
-          { name: 'featuredimage', store: true},
+          { name: 'url' },
+          { name: 'featuredimage' },
         ],
         // How to resolve each field's value for a supported node type
         resolvers: {

@@ -7,17 +7,14 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 
 export const BlogPostTemplate = ({
   content,
-  contentComponent,
   featuredimage,
   logline,
   cats,
@@ -36,8 +33,6 @@ export const BlogPostTemplate = ({
   refs,
   helmet,
 }) => {
-  const PostContent = contentComponent || Content
-
   return (
     <section className="section">
       {helmet || ''}
@@ -170,7 +165,6 @@ export const BlogPostTemplate = ({
 
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
-  contentComponent: PropTypes.func,
   logline: PropTypes.string,
   featuredimage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
@@ -184,7 +178,6 @@ const BlogPost = ({ data }) => {
     <Layout>
       <BlogPostTemplate
         content={post.html}
-        contentComponent={HTMLContent}
         logline={post.frontmatter.logline}
         helmet={
           <Helmet titleTemplate="%s | IP">
