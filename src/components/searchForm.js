@@ -1,15 +1,8 @@
 import React from 'react';
 import { navigate } from 'gatsby';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Checkbox from '@material-ui/core/Checkbox';
-import TreeView from '@material-ui/lab/TreeView';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import TreeItem from '@material-ui/lab/TreeItem';
+import { FormLabel, FormControl, FormGroup, FormControlLabel, FormHelperText, Checkbox, } from '@material-ui/core';
+import { TreeView, TreeItem } from '@material-ui/lab';
+import { ExpandMoreIcon, ChevronRightIcon } from '@material-ui/icons';
 
 
 const SearchForm = ({ query }) => (
