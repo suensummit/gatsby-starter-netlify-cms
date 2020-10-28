@@ -107,8 +107,8 @@ module.exports = {
           { name: 'spec', store: true },
           { name: 'ref', store: true },
           { name: 'content' },
-          { name: 'url' },
-          { name: 'featuredimage' },
+          { name: 'url', store: true },
+          { name: 'featuredimage', store: true },
         ],
         // How to resolve each field's value for a supported node type
         resolvers: {

@@ -9,11 +9,12 @@ const Search = ({
   location
 }) => {
   const [results, setResults] = useState([]);
-  const searchQuery = new URLSearchParams(location.search).get('keywords') || '';
+  const searchQuery = new URLSearchParams(location.search).getAll('keywords').join(' ') || '';
 
   useEffect(() => {
     if (searchQuery && window.__LUNR__) {
       window.__LUNR__.__loaded.then(lunr => {
+        console.log(window.__LUNR__)
         const refs = lunr.jp.index.search(searchQuery);
         const posts = refs.map(({ ref }) => lunr.jp.store[ref]);
         setResults(posts);
@@ -23,11 +24,15 @@ const Search = ({
 
   return (
     <Layout location={location} title={data.site.siteMetadata.title}>
-      <SearchForm query={searchQuery} />
-      <SearchResults
-        query={searchQuery}
-        results={results}
-      />
+      <section className="section">
+        <div className="container content">
+          <SearchForm query={searchQuery} />
+          <SearchResults
+            query={searchQuery}
+            results={results}
+          />
+        </div>
+      </section>
     </Layout>
   );
 };

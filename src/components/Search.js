@@ -1,9 +1,7 @@
-import React, { Component, Image } from 'react'
+import React, { Component } from 'react'
 import { kebabCase } from 'lodash'
 import { Link } from 'gatsby'
 import Select from 'react-select'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-import { makeStyles } from '@material-ui/core/styles';
 import { FormLabel, FormControl, FormGroup, FormControlLabel, FormHelperText, Checkbox } from '@material-ui/core';
 
 

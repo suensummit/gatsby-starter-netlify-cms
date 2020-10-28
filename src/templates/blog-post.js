@@ -65,7 +65,7 @@ export const BlogPostTemplate = ({
                         <ul className="catlist">
                           {cats.map((cat) => (
                             <li key={cat + `cat`}>
-                              <Link to={`/cats/${kebabCase(cat)}/`}>{cat}</Link>
+                              <Link to={`/search?keywords=${kebabCase(cat)}`}>{cat}</Link>
                             </li>
                           ))}
                         </ul>
@@ -79,7 +79,7 @@ export const BlogPostTemplate = ({
                         <ul className="taglist">
                           {tags.map((tag) => (
                             <li key={tag + `tag`}>
-                              <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                              <Link to={`/search?keywords=${kebabCase(tag)}`}>{tag}</Link>
                             </li>
                           ))}
                         </ul>
@@ -102,7 +102,7 @@ export const BlogPostTemplate = ({
               <TableBody>
                 <TableRow>
                   <TableCell component="th" scope="row" className="column is-4 is-offset-1">創作者</TableCell>
-                  <TableCell><Link to={`https://zh.wikipedia.org/wiki/${author}`}>{author}</Link></TableCell>
+                  <TableCell><Link to={`/search?keywords=${author}`}>{author}</Link></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell component="th" scope="row" className="column is-4 is-offset-1">原始文體</TableCell>
@@ -110,7 +110,7 @@ export const BlogPostTemplate = ({
                 </TableRow>
                 <TableRow>
                   <TableCell component="th" scope="row" className="column is-4 is-offset-1">版權擁有者</TableCell>
-                  <TableCell><Link to={`https://zh.wikipedia.org/wiki/${owner}`}>{owner}</Link></TableCell>
+                  <TableCell><Link to={`/search?keywords=${owner}`}>{owner}</Link></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell component="th" scope="row" className="column is-4 is-offset-1">出版者</TableCell>

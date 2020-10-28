@@ -11,7 +11,7 @@ const SearchForm = ({ query }) => (
     <label htmlFor="search-input"><h1></h1></label>
     <input
     	className="search__input searchbar"
-      type="search"
+      // type="search"
       id="search-input"
       name="keywords"
       onChange={(e) => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
